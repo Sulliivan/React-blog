@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const navLinks = [
     {
-        title: 'home',
+        title: 'Home',
         path: '/'
     },
     {
@@ -20,17 +20,24 @@ const navLinks = [
     }
 ]
 
-export default function Navigation () {
+export default function Navigation ({user}) {
+    const [menuActive, setMenuActive] = useState(false)
+
+
     return (
     <nav className="site-navigation">
         <span>My React Blog</span>
-        <ul>
-            { navLinks.map((link, index)=> (
-                <li key={index}>
-                    <Link to={link.path}>{link.title}</Link>
-                </li>
-            ))
-            }
-        </ul>
+            <div className={`menu-content-container ${menuActive && 'active'}`}>
+                <ul>
+                    { navLinks.map((link, index)=> (
+                        <li key={index}>
+                            <Link to={link.path}>{link.title}</Link>
+                        </li>
+                    ))
+                    }
+                </ul>
+                <span  className="menu-avatar-name">{`${user.firstName} ${user.lastName}`} </span>
+            </div> 
+                <ion-icon name="menu" onClick={() => setMenuActive(!menuActive)}/>
     </nav>)
 }

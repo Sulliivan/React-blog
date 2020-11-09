@@ -5,6 +5,7 @@
     display: flex;
     justify-content: space-between;
     color: $text-color;
+    align-items: center;
 
     span {
         font-size: 22px;
@@ -22,7 +23,8 @@
         display: flex;
         align-items: center;
         list-style-type: none;
-        margin-right: 20px;
+
+      
     }
     
     a {
@@ -34,4 +36,60 @@
             color: $text-link;
         }
     }
-}
+
+    .md.hydrated{
+        font-size: 36px;
+        width: 65px;
+        align-items: center;
+        cursor: pointer;
+        display: none;
+    }
+    .menu-content-container{
+        display: flex;
+        align-items: center;
+        padding-right: 30px;
+    }
+
+}   
+
+@media screen and (max-width: 800px){
+        .site-navigation{
+            .menu-content-container{
+                width: 300px;
+                height: calc(100% - 65px);
+                background: white;
+                position: absolute;
+                top: 65px;
+                left:  -300px;
+                transition: 300ms ease left;
+                flex-direction: column-reverse;
+                padding: 0;
+                
+
+                a{
+                    width: 100%;
+                    padding: 0;
+                }
+
+                ul{
+                    flex-direction: column;
+                    justify-content: flex-start;
+                    align-items: center;
+                    padding: 0;
+                    
+                }
+
+                ul, li{
+                    width: 100%;
+                    text-align: center;
+                }
+
+                &.active{
+                    left: 0px;
+                }
+            }
+                .md.hydrated{
+                    display: flex;
+                }
+        }
+    }
